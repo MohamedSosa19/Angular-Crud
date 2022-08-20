@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Mohamed",
+      "lastName": "sosa",
+      "email": "mohamedsosa626@gmail.com",
+      "mobil": "012547888889",
+      "salary": "50000"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

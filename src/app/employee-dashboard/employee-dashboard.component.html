@@ -1,0 +1,81 @@
+<nav class="navbar  navbar-light bg-primary">
+    <div class="container-fluid">
+        <h1 class="text-light">Angular Crud</h1>
+        <div class="d-flex">
+            <button (click)="ClickAddEmployee()" class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModal">Add Employee</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-3">
+    <thead>
+        <th scope="col">Employee Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobil</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of employeeData">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.mobil}}</td>
+            <td>{{row.salary}}</td>
+            <td>
+                <button (click)="onEdit(row)" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                <button (click)="deleteEmployeeDetails(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]='formValue'>
+                <div class="form-group">
+                  <label for="exampleInputFirstName">First Name</label>
+                  <input formControlName="firstName" type="text" class="form-control" id="exampleInputFirstName"  >
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputLastName">Last Name</label>
+                  <input formControlName="lastName" type="text" class="form-control" id="exampleInputLastName" >
+                </div>
+                
+                <div class="form-group">
+                  <label for="exampleInputEmail">Email</label>
+                  <input formControlName="email" type="email" class="form-control" id="exampleInputEmail" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputMobil">Mobile</label>
+                    <input formControlName="mobil" type="text" class="form-control" id="exampleInputMobil" >
+                  </div>
+                <div class="form-group">
+                    <label for="exampleInputSalary">Salary</label>
+                    <input formControlName="salary" type="text" class="form-control" id="exampleInputSalary" >
+                </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button id="cancle" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button *ngIf="showAdd" (click)="postEmployeeDetails()" type="button" class="btn btn-primary">Add</button>
+          <button *ngIf="showUpdate" (click)="updateEmployeeDetails()" type="button" class="btn btn-primary">Update</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
